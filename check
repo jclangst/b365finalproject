@@ -1,0 +1,3 @@
+#!/bin/bash
+kaggle competitions submissions -c porto-seguro-safe-driver-prediction
+echo

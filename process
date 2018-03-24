@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# script to prepare submission file
+# this is called by ./submit before actually submitting
