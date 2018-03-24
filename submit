@@ -1,6 +1,6 @@
 #!/bin/bash
 variable=$1
 
-./process.py
+./process
 kaggle competitions submit -f out.csv -m "${variable}"
 echo # kaggle competitions doesn't print a newline after finishing, bash prompt is on same line
