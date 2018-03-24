@@ -1,5 +1,5 @@
 ## Input files:
-`train.csv` and `test.csv`
+`train.csv` and `test.csv` need to be put into the folder `input/`
 
 ## Scripts
 Requires the [Kaggle API](https://github.com/kaggle/kaggle-api) to be configured & for the default competition to be set.
