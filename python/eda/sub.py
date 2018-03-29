@@ -17,3 +17,13 @@ import pandas as pd
 train = feather.read_dataframe('../input/train.feather')
 # the class of train is pandas.core.frame.DataFrame
 # print(train)
+
+
+# Missing data is -1
+# print((train == -1).sum())
+
+# Find duplicates
+# print(train.shape) # (595212, 59)
+# train.drop_duplicates()
+# print(train.shape) # (595212, 59)
+# No duplicates in data
