@@ -69,5 +69,4 @@ NAPipeline = Pipeline([
 if __name__ == "__main__":
     data = Data()
     transformed = NAPipeline.fit_transform(data.trainX)
-    print(transformed.head())
-    print(transformed.info())
+    print(pd.get_dummies(data.trainX['ps_ind_01'], prefix='ps_ind_01', drop_first=True).info())
