@@ -1,0 +1,6 @@
+jupyter
+numpy
+pandas
+feather-format
+scikit-learn
+scipy
