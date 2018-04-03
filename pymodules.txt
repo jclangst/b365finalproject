@@ -4,3 +4,4 @@ pandas
 feather-format
 scikit-learn
 scipy
+sklearn-pandas

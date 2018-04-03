@@ -17,13 +17,13 @@ DATA_DIR = "../data/"
 
 class Data():
 
-    def __init__(self, dataDir):
+    def __init__(self, dataDir = DATA_DIR):
 
         trainPath = path.join(dataDir, 'train.feather')
         testPath = path.join(dataDir, 'test.feather')
         origPath = path.join(dataDir, 'orig.csv')
 
-        #if we already have the train and test data in feather format, save load it
+        #if we already have the train and test data in feather format, load it
         if path.isfile(testPath) and path.isfile(trainPath):
             self.train = pd.read_feather(trainPath, 4)
             self.test = pd.read_feather(testPath, 4)
@@ -41,8 +41,9 @@ class Data():
         #sepearate predictors and targets from each set
         self.trainX = self.train.drop(columns="target")
         self.testX = self.test.drop(columns='target')
-        self.trainY = self.train[['target']]
-        self.testY = self.test[['target']]
+        self.trainY = self.train['target'].copy()
+        self.testY = self.test['target'].copy()
+
 
     #splits the data into a training and test set with the same ratio of claimants vs non-claimants
     def split_train_test(self, data, test_ratio):
@@ -52,9 +53,17 @@ class Data():
 
 
 
+def getCatoricalColumns(data):
+    cols = []
+    for col in data.columns:
+        if 'bin' in col or 'cat' in col:
+            cols.append(col)
+    return cols
+
+def getIntervalColumns(data):
+    return data.columns.difference(getCatoricalColumns(data))
+
+
 
 if __name__ == "__main__":
     data = Data("../data")
-
-    print(data.trainX.head())
-    print(data.trainY.head())
