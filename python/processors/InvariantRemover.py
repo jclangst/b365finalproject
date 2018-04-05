@@ -21,7 +21,6 @@ class InvariantRemover(TransformerMixin):
 
     def fit(self, X, y=None):
         self.variances = getVariances(X)
-        print(self.variances)
         return self
 
     def transform(self, X, y=None):
