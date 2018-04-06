@@ -1,6 +1,7 @@
 jupyter
 numpy
 pandas
+seaborn
 feather-format
 scikit-learn
 scipy
