@@ -1,6 +1,7 @@
 from sklearn.pipeline import Pipeline
 
 from python.Data import Data
+from python.gini import gini_normalized
 
 from python.processors.AttrTypeRemover import AttrTypeRemover
 from python.processors.NACreator import NAAdder
@@ -25,17 +26,9 @@ pipeline = Pipeline([
 
 if __name__ == "__main__":
     data = Data()
-    fitted = pipeline.fit(data.trainX, data.trainY)
-    transformed = pipeline.transform(data.testX)
 
-# output model correctness
-predictions = rf.predicted
+    pipeline.fit(data.trainX, data.trainY)
+    pipeline.transform(data.testX)
 
-print()
-print("Total datapoints:      {}".format(len(predictions)))
-print("Actual claims:         {}".format(len(data.testY[data.testY == 1])))
-print("Predicted claims:      {}".format(len(predictions[predictions == 1])))
-print()
-print("Correct predictions:   {}".format(len(predictions[(predictions == 1) & (data.testY == 1)])))
-print("Incorrect predictions: {}".format(len(predictions[(predictions == 1) & (data.testY == 0)])))
-print("Unpredicted claims:    {}".format(len(predictions[(predictions == 0) & (data.testY == 1)])))
+    predictions = rf.predicted
+    print("\nGini: " + str(gini_normalized(data.testY, predictions)) + '\n')
