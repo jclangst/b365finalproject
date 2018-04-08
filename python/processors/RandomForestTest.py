@@ -1,11 +1,11 @@
 from sklearn.base import TransformerMixin
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 
 
 class RandomForestTest(TransformerMixin):
     def fit(self, X, y=None):
         # number of CPU cores not auto-detected on my computer, set jobs=4
-        self.rf = RandomForestClassifier(n_jobs=4)
+        self.rf = RandomForestRegressor(n_jobs=4)
         print("RF fit starting")
         self.rf.fit(X, y)
         print("RF fit done")
